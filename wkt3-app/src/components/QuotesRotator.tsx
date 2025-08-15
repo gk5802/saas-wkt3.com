@@ -1,18 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
-
+import React, { useState, useEffect } from "react";
 const QUOTES: string[] = [
-  // 100 three-word trading/game quotes (sample — full list included in README)
-  "Play to win",
-  "Trade with care",
-  "Luck favors action",
-  "Study the odds",
-  "Keep positions small",
-  "Discipline beats luck",
-  "Measure, then act",
-  "Patience earns profit",
-  "Adapt or perish",
-  "Plan the exit",
+  // include 100 short trading/game quotes as strings. Example:
+  "Play smart, not hard",
+  "Risk managed wins",
   "Live Love Laugh",
   "Dreams Come True",
   "Trust The Process",
@@ -114,18 +105,13 @@ const QUOTES: string[] = [
   "Believe In Magic",
   "Keep Heart Open",
   "Respect Your Boundaries",
-
 ];
 
-export default function QuotesTicker() {
-  const [idx, setIdx] = useState(0);
+export default function QuotesRotator() {
+  const [i, setI] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setIdx((i) => (i + 1) % QUOTES.length), 5000);
+    const id = setInterval(() => setI((s) => (s + 1) % QUOTES.length), 5000);
     return () => clearInterval(id);
   }, []);
-  return (
-    <div className="hidden md:block">
-      <span className="italic">&quot;{QUOTES[idx]}&quot;</span>
-    </div>
-  );
+  return <div className="quotes text-sm italic">{QUOTES[i]}</div>;
 }

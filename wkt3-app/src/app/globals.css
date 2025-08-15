@@ -149,3 +149,5 @@
     @apply bg-background text-foreground;
   }
 }
+/* small custom styles */
+html, body { height: 100%; }
